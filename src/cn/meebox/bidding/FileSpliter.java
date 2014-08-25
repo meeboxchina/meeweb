@@ -7,7 +7,7 @@
 * @date Jun 12, 2014 1:30:16 PM
 * @version V1.0   
 */
-package cn.titanium.bidding;
+package cn.meebox.bidding;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -17,7 +17,6 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

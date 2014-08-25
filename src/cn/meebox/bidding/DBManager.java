@@ -1,4 +1,4 @@
-package cn.titanium.bidding;
+package cn.meebox.bidding;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

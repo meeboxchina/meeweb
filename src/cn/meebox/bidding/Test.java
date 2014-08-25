@@ -1,13 +1,13 @@
 /**   
-* @Project: titanium
+* @Project: meeweb
 * @Title: Test.java
-* @Package cn.titanium
+* @Package cn.meebox
 * @Description: TODO
 * @author sunyu
 * @date Jun 13, 2014 3:57:15 PM
 * @version V1.0   
 */
-package cn.titanium.bidding;
+package cn.meebox.bidding;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

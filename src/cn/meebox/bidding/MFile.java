@@ -1,4 +1,4 @@
-package cn.titanium.bidding;
+package cn.meebox.bidding;
 
 public class MFile {
 	private int id;

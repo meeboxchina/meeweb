@@ -1,5 +1,5 @@
 /**   
-* @Project: cdh4
+* @Project: meeweb
 * @Title: Mfile.java
 * @Package com.madhouse.devops.cdh4
 * @Description: TODO
@@ -8,12 +8,12 @@
 * @version V1.0   
 */
 
-package cn.titanium.bidding;
+package cn.meebox.bidding;
 
-import cn.titanium.bidding.FileCombiner;
-import cn.titanium.bidding.FileDencryptor;
-import cn.titanium.bidding.FileEncryptor;
-import cn.titanium.bidding.FileSpliter;
+import cn.meebox.bidding.FileCombiner;
+import cn.meebox.bidding.FileDencryptor;
+import cn.meebox.bidding.FileEncryptor;
+import cn.meebox.bidding.FileSpliter;
 
 /**
  * @author sunyu
