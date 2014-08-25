@@ -9,10 +9,6 @@
 */
 package cn.meebox.bidding;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.internal.util.xml.XmlDocument;
 
 /**
  * @author sunyu
@@ -28,19 +24,6 @@ public class Test {
 		MFile mfile = new MFile();
 		mfile.setFilename("shanghai");
 		
-		Configuration cfg = new Configuration();
-		
-		//XmlDocument xml = new XmlDocument("conf/hibernate.cfg.xml");
-		
-		//cfg.add("conf/hibernate.cfg.xml");
-        SessionFactory sf = cfg.configure().buildSessionFactory();
-         
-        Session session = sf.openSession();
-        session.beginTransaction();
-        session.save(mfile);
-        session.getTransaction().commit();
-        session.close();
-        sf.close(); 
 	}
 
 }
