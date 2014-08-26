@@ -37,7 +37,9 @@ public class Login extends HttpServlet {
 		
 		User user = new User(username, password);
 		String auth = user.auth();
+		response.setHeader("content-type", "text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
+		
 		
 		
 		JSONObject json=new JSONObject();  
