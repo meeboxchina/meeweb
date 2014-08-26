@@ -37,12 +37,13 @@ public class Login extends HttpServlet {
 		String auth = user.auth();
 		
 		HttpSession session = request.getSession();
+		session.setAttribute("user", username);
 		String sessionId = session.getId();
 		
-		session.setMaxInactiveInterval(60);//单位为秒
 		
 		PrintWriter out = response.getWriter();
 		out.print(sessionId);
+		out.print(auth);
 		
 	}
 
