@@ -29,10 +29,12 @@ public class Hello extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String username =null;
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		if(session.getAttribute("username") != "sunyu"){
-			out.print("sunyu");
+		if(session.getAttribute("username") != null){
+			username = session.getAttribute("username").toString();
+			out.print(username);
 		}else{
 			out.print("error");
 		}
