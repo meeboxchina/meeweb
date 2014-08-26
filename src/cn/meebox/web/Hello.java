@@ -32,10 +32,13 @@ public class Hello extends HttpServlet {
 		out.print("shanghai");
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		out.print(username);
+		out.print(password);
 		
 		User user = new User(username, password);
 		
 		String auth = user.auth();
+		
 		
 		out.print(auth);
 		out.print(user.test());
