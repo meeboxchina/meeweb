@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Login
@@ -33,11 +34,16 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		User user = new User(username, password);
-		
 		String auth = user.auth();
 		
+		HttpSession session = request.getSession();
+		String sessionId = session.getId();
+		
+		session.setMaxInactiveInterval(60);//单位为秒
+		
 		PrintWriter out = response.getWriter();
-		out.print(auth);
+		out.print(sessionId);
+		
 	}
 
 	/**
@@ -49,9 +55,7 @@ public class Login extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		User user = new User(username, password);
-		
 		String auth = user.auth();
-		
 		PrintWriter out = response.getWriter();
 		out.print(auth);
 		out.print("OK");
