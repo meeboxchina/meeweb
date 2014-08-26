@@ -38,17 +38,11 @@
 		    <configuration>
 		        <webResources>
 		            <resource>	 
-		                <!-- this is relative to the pom.xml directory -->
 		                <directory>WebContent</directory>
-		                
 		            </resource>
-		            
-		            </webResources>
-		           
-		            </configuration>
-		            
-		            </plugin>
-      
+				</webResources>
+			</configuration>
+		</plugin>
     </plugins>
   </build>
   <dependencies>
@@ -59,6 +53,11 @@
         <type>jar</type>
         <scope>provided</scope>
     </dependency>
+    <dependency>
+		<groupId>mysql</groupId>
+		<artifactId>mysql-connector-java</artifactId>
+		<version>5.1.32</version>
+	</dependency>
     <dependency>
 		<groupId>org.hibernate</groupId>
 		<artifactId>hibernate-core</artifactId>
