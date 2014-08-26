@@ -54,6 +54,8 @@ public class Login extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		out.print(auth);
+		out.print("OK");
+		out.close();
 	}
 
 }

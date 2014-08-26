@@ -30,6 +30,15 @@ public class Hello extends HttpServlet {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
 		out.print("shanghai");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
+		
+		User user = new User(username, password);
+		
+		String auth = user.Auth();
+		
+		PrintWriter out1 = response.getWriter();
+		out1.print(auth);
 	}
 
 	/**
