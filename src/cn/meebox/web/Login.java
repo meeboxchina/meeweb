@@ -72,24 +72,29 @@ public class Login extends HttpServlet {
 		
 		User user = new User(username, password);
 		String auth = user.auth();
-		PrintWriter out = response.getWriter();
+		response.setHeader("content-type", "text/html;charset=utf-8");
+		HttpSession session = request.getSession();
+		session.setAttribute("username", username);
 		
+		PrintWriter out = response.getWriter();
 		
 		JSONObject json=new JSONObject();  
 	    JSONArray jsonMembers = new JSONArray();  
-	    JSONObject member1 = new JSONObject();  
+	    JSONObject member1 = new JSONObject(); 
 	    
 	    if(auth=="ok"){
 	    	member1.put("state", "true");  
 		    member1.put("goto", "http://meebox.cn/getfile");  
 		    member1.put("errorcode","404");  
-		    member1.put("errormsg", "密码错误");  
+		    member1.put("errormsg", "password error");  
+		    member1.put("sid", session.getId()); 
 	    }
 	    
 	    jsonMembers.put(member1);  
 	    
 		out.print(jsonMembers.toString());
 		out.close();
+		
 	}
 
 }
