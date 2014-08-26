@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class Hello
@@ -29,20 +30,12 @@ public class Hello extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		PrintWriter out = response.getWriter();
-		out.print("shanghai");
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		out.print(username);
-		out.print(password);
-		
-		User user = new User(username, password);
-		
-		String auth = user.auth();
-		
-		
-		out.print(auth);
-		out.print(user.test());
-		out.print("beijing");
+		HttpSession session = request.getSession();
+		if(session.getAttribute("username") != "sunyu"){
+			out.print("sunyu");
+		}else{
+			out.print("error");
+		}
 	}
 
 	/**
