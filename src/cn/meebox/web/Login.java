@@ -34,7 +34,7 @@ public class Login extends HttpServlet {
 		
 		User user = new User(username, password);
 		
-		String auth = user.Auth();
+		String auth = user.auth();
 		
 		PrintWriter out = response.getWriter();
 		out.print(auth);
@@ -50,7 +50,7 @@ public class Login extends HttpServlet {
 		
 		User user = new User(username, password);
 		
-		String auth = user.Auth();
+		String auth = user.auth();
 		
 		PrintWriter out = response.getWriter();
 		out.print(auth);

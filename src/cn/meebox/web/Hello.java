@@ -35,10 +35,11 @@ public class Hello extends HttpServlet {
 		
 		User user = new User(username, password);
 		
-		String auth = user.Auth();
+		String auth = user.auth();
 		
-		PrintWriter out1 = response.getWriter();
-		out1.print(auth);
+		out.print(auth);
+		out.print(user.test());
+		out.print("beijing");
 	}
 
 	/**

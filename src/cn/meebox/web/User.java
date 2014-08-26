@@ -16,7 +16,7 @@ public class User {
 		this.password = password;
 	}
 	
-	public String Auth() {
+	public String auth() {
 		String auth = "";
 		
 		Connection conn = null; //定义一个MYSQL链接对象
@@ -49,5 +49,8 @@ public class User {
 		
 		return auth;
 	}
-
+	
+	public String test(){
+		return "test";
+	}
 }
