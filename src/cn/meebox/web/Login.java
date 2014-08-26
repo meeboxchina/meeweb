@@ -43,8 +43,6 @@ public class Login extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 		
-		
-		
 		JSONObject json=new JSONObject();  
 	    JSONArray jsonMembers = new JSONArray();  
 	    JSONObject member1 = new JSONObject(); 
@@ -53,7 +51,7 @@ public class Login extends HttpServlet {
 	    	member1.put("state", "true");  
 		    member1.put("goto", "http://meebox.cn/getfile");  
 		    member1.put("errorcode","404");  
-		    member1.put("errormsg", "密码错误");  
+		    member1.put("errormsg", "password error");  
 		    member1.put("sid", session.getId()); 
 	    }
 	    
