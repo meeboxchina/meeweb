@@ -16,7 +16,7 @@ import org.json.JSONObject;
 /**
  * Servlet implementation class Login
  */
-@WebServlet("/user")
+@WebServlet("/login")
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
