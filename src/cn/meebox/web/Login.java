@@ -44,6 +44,7 @@ public class Login extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		JSONObject json=new JSONObject();  
+		
 	    JSONArray jsonMembers = new JSONArray();  
 	    JSONObject member1 = new JSONObject(); 
 	    
@@ -62,8 +63,9 @@ public class Login extends HttpServlet {
 		    member1.put("sid", session.getId()); 
 	    }
 	    
+	    
 	    jsonMembers.put(member1);  
-		out.print(jsonMembers.toString());
+		out.print(member1.toString());
 		out.close();
 	}
 
