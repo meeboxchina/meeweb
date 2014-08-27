@@ -105,7 +105,7 @@ public class Login extends HttpServlet {
 	    }
 	    
 	    jsonMembers.put(member1);  
-		out.print(jsonMembers.toString());
+		out.print(member1.toString());
 		out.close();
 	}
 
