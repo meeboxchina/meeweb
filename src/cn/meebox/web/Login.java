@@ -84,13 +84,13 @@ public class Login extends HttpServlet {
 	    
 	    if(auth=="ok"){
 	    	member1.put("username", username);  
-	    	member1.put("state", "true"); 
+	    	member1.put("status", "true"); 
 		    member1.put("goto", "http://meebox.cn/login");  
 		    member1.put("errorcode","");  
 		    member1.put("errormsg", "");  
 		    member1.put("sid", session.getId()); 
 	    }else{
-	    	member1.put("state", "error");  
+	    	member1.put("status", "error");  
 		    member1.put("goto", "http://meebox.cn/getfile");  
 		    member1.put("errorcode","404");  
 		    member1.put("errormsg", "password error");  
