@@ -44,7 +44,7 @@ public class File extends HttpServlet {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/meebox", "meebox", "meebox");
 				Statement stmt = conn.createStatement();
-				String sql = "select * from file where username=\"" + username + "\"";
+				String sql = "select * from file";
 				ResultSet rs = stmt.executeQuery(sql);
 				
 				if(rs.next()){
