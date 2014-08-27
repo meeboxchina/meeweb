@@ -9,6 +9,7 @@ import java.sql.Statement;
 public class User {
 	private String username;
 	private String password;
+	private int uid = 0;
 	
 	public User(String username, String password) {
 		// TODO Auto-generated constructor stub
@@ -29,6 +30,8 @@ public class User {
 			
 			if(rs.next()){
 				auth = "ok";
+				this.uid = rs.getInt("uid");
+				
 			}else{
 				auth = "error";
 			}
@@ -52,5 +55,9 @@ public class User {
 	
 	public String test(){
 		return "test";
+	}
+	
+	public int getUid(){
+		return this.uid;
 	}
 }

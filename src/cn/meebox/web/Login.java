@@ -49,7 +49,8 @@ public class Login extends HttpServlet {
 	    JSONObject member1 = new JSONObject(); 
 	    
 	    if(auth=="ok"){
-	    	member1.put("username", username);  
+	    	member1.put("username", username); 
+	    	member1.put("uid", user.getUid()); 
 	    	member1.put("authentication", "successfully"); 
 		    member1.put("goto", "http://meebox.cn/login");  
 		    member1.put("errorcode","");  
@@ -91,6 +92,7 @@ public class Login extends HttpServlet {
 	    
 	    if(auth=="ok"){
 	    	member1.put("username", username);  
+	    	member1.put("uid", user.getUid());
 	    	member1.put("authentication", "successfully"); 
 		    member1.put("goto", "http://meebox.cn/login");  
 		    member1.put("errorcode","");  
