@@ -51,6 +51,7 @@ public class File extends HttpServlet {
 		    JSONArray jsonMembers = new JSONArray();  
 		    JSONObject member1 = new JSONObject(); 
 		    
+		    
 		    member1.put("authentication", "failed");  
 			member1.put("goto", "http://meebox.cn/login");  
 			member1.put("errorcode","404");  
@@ -121,6 +122,7 @@ public class File extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Object username = session.getAttribute("username"); 
+		Integer uid = (Integer)session.getAttribute("uid"); 
 		
 		if(username == null){
 			JSONObject json=new JSONObject();  
@@ -157,7 +159,7 @@ public class File extends HttpServlet {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				conn = DriverManager.getConnection("jdbc:mysql://db.meebox.cn:3306/meebox", "meebox", "meebox");
 				Statement stmt = conn.createStatement();
-				String sql = "select * from file";
+				String sql = "select * from file where owner=" + uid;
 				ResultSet rs = stmt.executeQuery(sql);
 				
 				while(rs.next()){
