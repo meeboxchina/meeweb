@@ -72,7 +72,21 @@ public class File extends HttpServlet {
 				}else{
 					
 				}
-				out.print(filename);
+				JSONObject json=new JSONObject();  
+				
+			    JSONArray jsonMembers = new JSONArray();  
+			    JSONObject member1 = new JSONObject(); 
+			    
+			    member1.put("authentication", "successfully");  
+			    member1.put("username", (String)username.toString()); 
+				member1.put("goto", "");  
+				member1.put("errorcode","");  
+				member1.put("errormsg", "");  
+			    
+				member1.put("file", "1"); 
+				
+			    jsonMembers.put(member1);  
+				out.print(member1.toString());
 			        
 			} catch (InstantiationException e) {
 				// TODO Auto-generated catch block
