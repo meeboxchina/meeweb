@@ -38,8 +38,7 @@ public class Login extends HttpServlet {
 		User user = new User(username, password);
 		String auth = user.auth();
 		response.setHeader("content-type", "text/html;charset=utf-8");
-		HttpSession session = request.getSession();
-		session.setAttribute("username", username);
+		
 		
 		PrintWriter out = response.getWriter();
 		
@@ -49,6 +48,12 @@ public class Login extends HttpServlet {
 	    JSONObject member1 = new JSONObject(); 
 	    
 	    if(auth=="ok"){
+	    	
+	    	HttpSession session = request.getSession();
+			session.setAttribute("username", username);
+			session.setAttribute("uid", user.getUid());
+	    	
+	    	
 	    	member1.put("username", username); 
 	    	member1.put("uid", user.getUid()); 
 	    	member1.put("authentication", "successfully"); 
@@ -61,7 +66,6 @@ public class Login extends HttpServlet {
 		    member1.put("goto", "http://meebox.cn/getfile");  
 		    member1.put("errorcode","404");  
 		    member1.put("errormsg", "password error");  
-		    member1.put("sid", session.getId()); 
 	    }
 	    
 	    
@@ -81,9 +85,6 @@ public class Login extends HttpServlet {
 		User user = new User(username, password);
 		String auth = user.auth();
 		response.setHeader("content-type", "text/html;charset=utf-8");
-		HttpSession session = request.getSession();
-		session.setAttribute("username", username);
-		
 		PrintWriter out = response.getWriter();
 		
 		JSONObject json=new JSONObject();  
@@ -91,6 +92,13 @@ public class Login extends HttpServlet {
 	    JSONObject member1 = new JSONObject(); 
 	    
 	    if(auth=="ok"){
+	    	
+
+	    	HttpSession session = request.getSession();
+			session.setAttribute("username", username);
+			session.setAttribute("uid", user.getUid());
+	    	
+			
 	    	member1.put("username", username);  
 	    	member1.put("uid", user.getUid());
 	    	member1.put("authentication", "successfully"); 
@@ -103,7 +111,6 @@ public class Login extends HttpServlet {
 		    member1.put("goto", "http://meebox.cn/getfile");  
 		    member1.put("errorcode","404");  
 		    member1.put("errormsg", "password error");  
-		    member1.put("sid", session.getId()); 
 	    }
 	    
 	    jsonMembers.put(member1);  

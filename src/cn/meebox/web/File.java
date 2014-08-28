@@ -43,6 +43,7 @@ public class File extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Object username = session.getAttribute("username"); 
+		Integer uid = (Integer)session.getAttribute("uid"); 
 		
 		if(username == null){
 			JSONObject json=new JSONObject();  
@@ -79,7 +80,7 @@ public class File extends HttpServlet {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				conn = DriverManager.getConnection("jdbc:mysql://db.meebox.cn:3306/meebox", "meebox", "meebox");
 				Statement stmt = conn.createStatement();
-				String sql = "select * from file";
+				String sql = "select * from file where owner=" + uid.toString() ;
 				ResultSet rs = stmt.executeQuery(sql);
 				
 				while(rs.next()){
