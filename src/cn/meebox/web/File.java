@@ -15,6 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 /**
  * Servlet implementation class File
  */
@@ -36,9 +39,26 @@ public class File extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String filename = "";
+		PrintWriter out = response.getWriter();
+		
 		HttpSession session = request.getSession();
-		String username=(String)session.getAttribute("username"); 
-		if(username!=""){
+		Object username = session.getAttribute("username"); 
+		
+		if(username == null){
+			JSONObject json=new JSONObject();  
+			
+		    JSONArray jsonMembers = new JSONArray();  
+		    JSONObject member1 = new JSONObject(); 
+		    
+		    member1.put("authentication", "failed");  
+			member1.put("goto", "http://meebox.cn/login");  
+			member1.put("errorcode","404");  
+			member1.put("errormsg", "");  
+			member1.put("sid", ""); 
+		    
+		    jsonMembers.put(member1);  
+			out.print(member1.toString());
+		}else{
 			Connection conn = null; //定义一个MYSQL链接对象
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
@@ -52,8 +72,6 @@ public class File extends HttpServlet {
 				}else{
 					
 				}
-				
-				PrintWriter out = response.getWriter();
 				out.print(filename);
 			        
 			} catch (InstantiationException e) {
@@ -77,6 +95,56 @@ public class File extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		String filename = "";
+		PrintWriter out = response.getWriter();
+		
+		HttpSession session = request.getSession();
+		Object username = session.getAttribute("username"); 
+		
+		if(username == null){
+			JSONObject json=new JSONObject();  
+			
+		    JSONArray jsonMembers = new JSONArray();  
+		    JSONObject member1 = new JSONObject(); 
+		    
+		    member1.put("authentication", "failed");  
+			member1.put("goto", "http://meebox.cn/login");  
+			member1.put("errorcode","404");  
+			member1.put("errormsg", "");  
+			member1.put("sid", ""); 
+		    
+		    jsonMembers.put(member1);  
+			out.print(member1.toString());
+		}else{
+			Connection conn = null; //定义一个MYSQL链接对象
+			try {
+				Class.forName("com.mysql.jdbc.Driver").newInstance();
+				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/meebox", "meebox", "meebox");
+				Statement stmt = conn.createStatement();
+				String sql = "select * from file";
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				if(rs.next()){
+					filename = rs.getString("filename");
+				}else{
+					
+				}
+				out.print(filename);
+			        
+			} catch (InstantiationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IllegalAccessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }
