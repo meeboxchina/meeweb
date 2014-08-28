@@ -61,6 +61,21 @@ public class File extends HttpServlet {
 		}else{
 			Connection conn = null; //定义一个MYSQL链接对象
 			try {
+				JSONObject json=new JSONObject();  
+				
+			    JSONArray jsonMembers = new JSONArray();  
+			    JSONObject member1 = new JSONObject(); 
+			    
+			    
+			    
+			    JSONArray userfiles = new JSONArray(); 
+			    
+				member1.put("authentication", "successfully");  
+			    member1.put("username", (String)username.toString()); 
+				member1.put("goto", "");  
+				member1.put("errorcode","");  
+				member1.put("errormsg", "");  
+				
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
 				conn = DriverManager.getConnection("jdbc:mysql://db.meebox.cn:3306/meebox", "meebox", "meebox");
 				Statement stmt = conn.createStatement();
@@ -69,21 +84,18 @@ public class File extends HttpServlet {
 				
 				if(rs.next()){
 					filename = rs.getString("filename");
+					JSONObject file = new JSONObject();
+					file.put("filename", filename);
+					userfiles.put(file);
+					
 				}else{
 					
 				}
-				JSONObject json=new JSONObject();  
 				
-			    JSONArray jsonMembers = new JSONArray();  
-			    JSONObject member1 = new JSONObject(); 
 			    
-			    member1.put("authentication", "successfully");  
-			    member1.put("username", (String)username.toString()); 
-				member1.put("goto", "");  
-				member1.put("errorcode","");  
-				member1.put("errormsg", "");  
 			    
-				member1.put("file", "1"); 
+			    
+				member1.put("file", userfiles); 
 				
 			    jsonMembers.put(member1);  
 				out.print(member1.toString());
