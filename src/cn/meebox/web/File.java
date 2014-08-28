@@ -62,7 +62,7 @@ public class File extends HttpServlet {
 			Connection conn = null; //定义一个MYSQL链接对象
 			try {
 				Class.forName("com.mysql.jdbc.Driver").newInstance();
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/meebox", "meebox", "meebox");
+				conn = DriverManager.getConnection("jdbc:mysql://db.meebox.cn:3306/meebox", "meebox", "meebox");
 				Statement stmt = conn.createStatement();
 				String sql = "select * from file";
 				ResultSet rs = stmt.executeQuery(sql);
